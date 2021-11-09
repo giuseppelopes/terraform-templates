@@ -8,7 +8,7 @@
 #     default = "~/.aws/credentials"
 # }
 variable "aws_key_name" {
-    default = "terraform"
+    default = "terraform" # Your Key-Pair Created in AWS
 }
 
 variable "aws_region" {
@@ -19,7 +19,8 @@ variable "aws_region" {
 variable "amis" {
     description = "AMIs by region"
     default = {
-        sa-east-1 = "ami-0669a96e355eac82f"
+#        sa-east-1 = "ami-0669a96e355eac82f" # CentOS Template
+        sa-east-1 = "ami-0e66f5495b4efdd0f" # Ubuntu Template
     }
 }
 
