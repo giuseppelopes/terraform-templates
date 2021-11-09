@@ -84,13 +84,20 @@ resource "aws_security_group" "web" {
         cidr_blocks = ["0.0.0.0/0"]
     }
 
-    egress { # MySQL
-        from_port = 3306
-        to_port = 3306
-        protocol = "tcp"
+    egress { # Access to all Internet
+        from_port   = 0
+        to_port     = 0
+        protocol    = "-1"
         cidr_blocks = ["0.0.0.0/0"]
-        # cidr_blocks = ["${var.private_subnet_cidr}"]
-    }
+  }
+
+    # egress { # Only MySQL
+    #     from_port = 3306
+    #     to_port = 3306
+    #     protocol = "tcp"
+    #     cidr_blocks = ["0.0.0.0/0"]
+    #     # cidr_blocks = ["${var.private_subnet_cidr}"]
+    # }
 
     vpc_id = "${aws_vpc.main_vpc.id}"
 
